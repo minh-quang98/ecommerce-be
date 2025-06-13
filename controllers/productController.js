@@ -8,9 +8,7 @@ const db = require('../config/db');
 exports.getAllProducts = async (req, res) => {
   try {
     const [listProducts] = await db.query('SELECT * FROM products ORDER BY created_at DESC LIMIT 0,20');
-    return res.status(200).json({
-      items: listProducts
-    });
+    return res.status(200).json(listProducts);
   } catch (err) {
     console.log('Lỗi lấy danh sách sản phẩm: ', err);
     res.status(500).json({
